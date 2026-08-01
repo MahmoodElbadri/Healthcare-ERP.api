@@ -1,0 +1,79 @@
+==============================
+🌐 Angular (client)
+==============================
+dependencies
+clientnode_modules
+client.pnp
+client.pnp.js
+production build
+clientdist
+client.angularcache
+client.angular
+misc
+clientnpm-debug.log
+clientyarn-debug.log
+clientyarn-error.log
+client.env
+client.env.local
+client.env.development.local
+client.env.test.local
+client.env.production.local
+editor files
+client.vscode
+client.idea
+mac  system files
+.DS_Store
+Thumbs.db
+
+==============================
+⚙️ .NET (backend)
+==============================
+build results
+[Bb]in
+[Oo]bj
+[Ll]og
+Logs
+.log
+user-specific files
+.user
+.rsuser
+.suo
+.userosscache
+.sln.docstates
+Visual Studio settings
+.vs
+.vscode
+.idea
+test results
+[Tt]est[Rr]esult
+[Bb]uild[Ll]og.
+NuGet packages
+.nupkg
+Restore folders
+packages
+except build scripts content
+!build
+Environment files
+appsettings.Development.json
+appsettings.Local.json
+appsettings..local.json
+Rider & JetBrains
+.idea
+.iml
+Publish output
+publish
+binRelease
+objRelease
+Backup & temporary
+.tmp
+.bak
+.swp
+.swo
+.dbmdl
+Resharper
+_ReSharper
+.DotSettings.user
+IIS Express
+.vs
+.vscode
+iisexpress
