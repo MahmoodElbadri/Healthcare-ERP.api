@@ -1,5 +1,6 @@
 ﻿using Healthcare_ERP.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Healthcare_ERP.Infrastructure.Data;
 
@@ -27,7 +28,7 @@ public class HealthDbContext:DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
 
