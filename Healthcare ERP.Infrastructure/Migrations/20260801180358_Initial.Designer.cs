@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Healthcare_ERP.Infrastructure.Migrations
 {
     [DbContext(typeof(HealthDbContext))]
-    [Migration("20260801125850_Initial")]
+    [Migration("20260801180358_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -119,7 +119,8 @@ namespace Healthcare_ERP.Infrastructure.Migrations
 
                     b.Property<string>("Specialty")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
