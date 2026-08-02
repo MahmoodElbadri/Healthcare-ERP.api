@@ -12,9 +12,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         _dbContext = dbContext;
     }
 
-    public async Task Add(T entity)
+    public async Task<T> Add(T entity)
     {
-        await _dbContext.Set<T>().AddAsync(entity);
+      var res =  await _dbContext.Set<T>().AddAsync(entity);
+        return res.Entity;
     }
 
     public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)
