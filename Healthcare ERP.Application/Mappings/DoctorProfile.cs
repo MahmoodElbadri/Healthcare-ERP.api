@@ -10,6 +10,8 @@ public class DoctorProfile : Profile
     {
         CreateMap<AddDoctorDto, Doctor>();
 
+        CreateMap<UpdateDoctorDto, Doctor>();
+
         CreateMap<Doctor, DoctorDto>();
     }
 }

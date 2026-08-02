@@ -23,9 +23,12 @@ public class PatientService : IPatientService
         return _mapper.Map<PatientDto>(patientAdded);
     }
 
-    public Task DeletePatient(int id)
+    public async Task DeletePatient(int id)
     {
-        throw new NotImplementedException();
+        var patient = await _unitOfWork.Patients.Get(id);
+        if (patient == null) throw new Exception("Patient not found");
+        await _unitOfWork.Patients.Remove(patient);
+        await _unitOfWork.CompleteAsync();
     }
 
     public async Task<IEnumerable<PatientDto>> GetAllPatients()
@@ -34,13 +37,19 @@ public class PatientService : IPatientService
         return _mapper.Map<IEnumerable<PatientDto>>(patients);
     }
 
-    public Task<PatientDto> GetPatientById(int id)
+    public async Task<PatientDto> GetPatientById(int id)
     {
-        throw new NotImplementedException();
+        var patient = await _unitOfWork.Patients.Get(id);
+        if (patient == null) throw new Exception("Patient not found");
+        return _mapper.Map<PatientDto>(patient);
     }
 
-    public Task UpdatePatient(PatientDto patientDto)
+    public async Task UpdatePatient(UpdatePatientDto patientDto)
     {
-        throw new NotImplementedException();
+        var patient = await _unitOfWork.Patients.Get(patientDto.Id);
+        if (patient == null) throw new Exception("Patient not found");
+        _mapper.Map(patientDto, patient);
+        await _unitOfWork.Patients.Update(patient);
+        await _unitOfWork.CompleteAsync();
     }
 }

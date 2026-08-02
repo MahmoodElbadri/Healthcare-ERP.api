@@ -24,9 +24,12 @@ public class DoctorService : IDoctorService
         return _mapper.Map<DoctorDto>(doctorAdded);
     }
 
-    public Task DeleteDoctor(int id)
+    public async Task DeleteDoctor(int id)
     {
-        throw new NotImplementedException();
+        var doctor = await _unitOfWork.Doctors.Get(id);
+        if (doctor == null) throw new Exception("Doctor not found");
+        await _unitOfWork.Doctors.Remove(doctor);
+        await _unitOfWork.CompleteAsync();
     }
 
     public async Task<IEnumerable<DoctorDto>> GetAllDoctors()
@@ -35,13 +38,19 @@ public class DoctorService : IDoctorService
         return _mapper.Map<IEnumerable<DoctorDto>>(doctors);
     }
 
-    public Task<DoctorDto> GetDoctorById(int id)
+    public async Task<DoctorDto> GetDoctorById(int id)
     {
-        throw new NotImplementedException();
+        var doctor = await _unitOfWork.Doctors.Get(id);
+        if (doctor == null) throw new Exception("Doctor not found");
+        return _mapper.Map<DoctorDto>(doctor);
     }
 
-    public Task UpdateDoctor(DoctorDto doctorDto)
+    public async Task UpdateDoctor(UpdateDoctorDto doctorDto)
     {
-        throw new NotImplementedException();
+        var doctor = await _unitOfWork.Doctors.Get(doctorDto.Id);
+        if (doctor == null) throw new Exception("Doctor not found");
+        _mapper.Map(doctorDto, doctor);
+        await _unitOfWork.Doctors.Update(doctor);
+        await _unitOfWork.CompleteAsync();
     }
 }

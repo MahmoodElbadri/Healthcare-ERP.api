@@ -6,7 +6,7 @@ namespace Healthcare_ERP.Application.Interfaces;
 public interface IDoctorService
 {
     Task<DoctorDto> AddDoctor(AddDoctorDto doctorDto);
-    Task UpdateDoctor(DoctorDto doctorDto);
+    Task UpdateDoctor(UpdateDoctorDto doctorDto);
     Task DeleteDoctor(int id);
     Task<DoctorDto> GetDoctorById(int id);
     Task<IEnumerable<DoctorDto>> GetAllDoctors();

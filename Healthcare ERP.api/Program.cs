@@ -1,3 +1,4 @@
+using Healthcare_ERP.api.Middlewares;
 using Healthcare_ERP.Application.Extensions;
 using Healthcare_ERP.Infrastructure.Extensions;
 
@@ -14,6 +15,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
