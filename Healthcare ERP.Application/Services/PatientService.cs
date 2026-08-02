@@ -15,7 +15,7 @@ public class PatientService : IPatientService
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-    public async Task<PatientDto> AddPatient(PatientDto patientDto)
+    public async Task<PatientDto> AddPatient(AddPatientDto patientDto)
     {
         var patientModel = _mapper.Map<Patient>(patientDto);
         var patientAdded = await _unitOfWork.Patients.Add(patientModel);
