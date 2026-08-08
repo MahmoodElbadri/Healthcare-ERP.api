@@ -9,6 +9,7 @@ public interface IUnitOfWork:IDisposable
     IGenericRepository<Medication> Medications { get; }
     IGenericRepository<Appointment> Appointments { get; }
     IGenericRepository<Prescription> Prescriptions { get; }
+    IGenericRepository<Speciality> Specialities { get; }
 
     Task<int> CompleteAsync();
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Healthcare_ERP.Application.DTOs;
+﻿namespace Healthcare_ERP.Application.DTOs;
 
 public class AddDoctorDto
 {

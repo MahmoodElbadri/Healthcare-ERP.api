@@ -12,6 +12,7 @@ public static class ApplicationCollectionExtension
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddScoped<IDoctorService,DoctorService>();
         services.AddScoped<IPatientService,PatientService>();
+        services.AddScoped<ISpecialityService, SpecialityService>();
         services.AddScoped<IAppointmentService,AppointmentService>();
     }
 }
