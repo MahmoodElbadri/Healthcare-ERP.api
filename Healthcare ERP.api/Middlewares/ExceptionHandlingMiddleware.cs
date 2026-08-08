@@ -38,7 +38,7 @@ public class ExceptionHandlingMiddleware
         // Wrap the error in your standard response pattern
         var response = ApiResponse<object>.Failure(
             error: exception.Message,
-            message: "An unexpected error occurred on the server."
+            message: exception.Message
         );
 
         // Serialize to JSON with camelCase to match frontend expectations

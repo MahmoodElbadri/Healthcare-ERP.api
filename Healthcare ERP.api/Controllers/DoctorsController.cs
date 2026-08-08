@@ -34,24 +34,24 @@ public class DoctorsController : ControllerBase
         return Ok(successResponse);
     }
 
-    [HttpGet("GetDoctorById")]
-    public async Task<IActionResult> GetDoctorById([FromQuery] int doctorId)
+    [HttpGet("GetDoctorById/{doctorId}")]
+    public async Task<IActionResult> GetDoctorById([FromRoute] int doctorId)
     {
         var doctorDto = await _doctorService.GetDoctorById(doctorId);
         var successResponse = ApiResponse<DoctorDto>.Success(doctorDto);
         return Ok(successResponse);
     }
 
-    [HttpDelete("DeleteDoctor")]
-    public async Task<IActionResult> DeleteDoctor([FromQuery] int doctorId)
+    [HttpDelete("DeleteDoctor/{doctorId}")]
+    public async Task<IActionResult> DeleteDoctor([FromRoute] int doctorId)
     {
         await _doctorService.DeleteDoctor(doctorId);
         var successResponse = ApiResponse<DoctorDto>.Success(null,"Doctor deleted successfully");
         return Ok(successResponse);
     }
 
-    [HttpPut("UpdateDoctor")]
-    public async Task<IActionResult> UpdateDoctor(UpdateDoctorDto doctorDto)
+    [HttpPut("UpdateDoctor/{doctorId}")]
+    public async Task<IActionResult> UpdateDoctor([FromRoute] int doctorId, UpdateDoctorDto doctorDto)
     {
         await _doctorService.UpdateDoctor(doctorDto);
         var successResponse = ApiResponse<DoctorDto>.Success(null,"Doctor updated successfully");

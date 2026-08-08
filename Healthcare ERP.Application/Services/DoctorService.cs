@@ -29,6 +29,8 @@ public class DoctorService : IDoctorService
     {
         var doctor = await _unitOfWork.Doctors.Get(id);
         if (doctor == null) throw new NotFoundException("Doctor not found", id.ToString());
+        var hasAppointments = await _unitOfWork.Appointments.Find(tmp => tmp.DoctorId == id);
+        if(hasAppointments.Any()) throw new Exception("Doctor has appointments and can't be deleted");
         await _unitOfWork.Doctors.Remove(doctor);
         await _unitOfWork.CompleteAsync();
     }
