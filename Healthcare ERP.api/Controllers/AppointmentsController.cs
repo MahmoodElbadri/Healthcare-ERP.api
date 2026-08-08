@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Healthcare_ERP.Application.DTOs;
 using Healthcare_ERP.Application.Interfaces;
 using Healthcare_ERP.Domain.Wrappers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Healthcare_ERP.api.Controllers
 {
@@ -29,6 +23,22 @@ namespace Healthcare_ERP.api.Controllers
         {
             await _appointmentService.AddAppointment(dto);
             var successResponse = ApiResponse<bool>.Success(true, "Appointment added successfully");
+            return Ok(successResponse);
+        }
+
+        [HttpGet("Doctor")]
+        public async Task<IActionResult> GetDoctorAppointments([FromQuery] int doctorId)
+        {
+            var appointments = await _appointmentService.GetDoctorAppointments(doctorId);
+            var successResponse = ApiResponse<IEnumerable<AppointmentDto>>.Success(appointments);
+            return Ok(successResponse);
+        }
+
+        [HttpPatch("UpdateStatus")]
+        public async Task<IActionResult> UpdateAppointmentStatus(UpdateAppointmentStatusDto dto)
+        {
+            await _appointmentService.UpdateAppointmentStatus(dto);
+            var successResponse = ApiResponse<bool>.Success(true, "Appointment status updated successfully");
             return Ok(successResponse);
         }
         

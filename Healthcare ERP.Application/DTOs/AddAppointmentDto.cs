@@ -9,4 +9,3 @@ public class AddAppointmentDto
     public int DoctorId { get; set; }
     public string? Notes { get; set; }
 }
-
