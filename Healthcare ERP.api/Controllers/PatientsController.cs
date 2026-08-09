@@ -19,6 +19,8 @@ public class PatientsController : ControllerBase
     }
     // GET
     [HttpGet("GetAllPatients")]
+    [ProducesResponseType(typeof(ApiResponse<IEnumerable<PatientDto>>), 200)]
+    [ProducesResponseType(typeof(ApiResponse<IEnumerable<PatientDto>>), 500)]
     public async Task<IActionResult> GetAllPatients()
     {
         var patients = await _patientService.GetAllPatients();
@@ -34,24 +36,24 @@ public class PatientsController : ControllerBase
         return Ok(successResponse);
     }
 
-    [HttpGet("GetPatientById")]
-    public async Task<IActionResult> GetPatientById([FromQuery] int patientId)
+    [HttpGet("GetPatientById/{patientId}")]
+    public async Task<IActionResult> GetPatientById([FromRoute] int patientId)
     {
         var patientDto = await _patientService.GetPatientById(patientId);
         var successResponse = ApiResponse<PatientDto>.Success(patientDto);
         return Ok(successResponse);
     }
 
-    [HttpDelete("DeletePatient")]
-    public async Task<IActionResult> DeletePatient([FromQuery] int patientId)
+    [HttpDelete("DeletePatient/{patientId}")]
+    public async Task<IActionResult> DeletePatient([FromRoute] int patientId)
     {
         await _patientService.DeletePatient(patientId);
         var successResponse = ApiResponse<PatientDto>.Success(null,"Patient deleted successfully");
         return Ok(successResponse);
     }
 
-    [HttpPut("UpdatePatient")]
-    public async Task<IActionResult> UpdatePatient(UpdatePatientDto patientDto)
+    [HttpPut("UpdatePatient/{patientId}")]
+    public async Task<IActionResult> UpdatePatient([FromRoute] int patientId,UpdatePatientDto patientDto)
     {
         await _patientService.UpdatePatient(patientDto);
         var successResponse = ApiResponse<PatientDto>.Success(null,"Patient updated successfully");
