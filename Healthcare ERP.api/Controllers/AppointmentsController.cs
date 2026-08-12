@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Healthcare_ERP.api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AppointmentsController : ControllerBase
     {
@@ -21,13 +21,13 @@ namespace Healthcare_ERP.api.Controllers
         [HttpPost("Add-Appointment")]
         public async Task<IActionResult> AddAppointment(AddAppointmentDto dto)
         {
-            await _appointmentService.AddAppointment(dto);
-            var successResponse = ApiResponse<bool>.Success(true, "Appointment added successfully");
+            var result = await _appointmentService.AddAppointment(dto);
+            var successResponse = ApiResponse<AppointmentDto>.Success(result, "Appointment added successfully");
             return Ok(successResponse);
         }
 
-        [HttpGet("Doctor")]
-        public async Task<IActionResult> GetDoctorAppointments([FromQuery] int doctorId)
+        [HttpGet("Doctor/{doctorId}")]
+        public async Task<IActionResult> GetDoctorAppointments([FromRoute] int doctorId)
         {
             var appointments = await _appointmentService.GetDoctorAppointments(doctorId);
             var successResponse = ApiResponse<IEnumerable<AppointmentDto>>.Success(appointments);
@@ -39,6 +39,14 @@ namespace Healthcare_ERP.api.Controllers
         {
             await _appointmentService.UpdateAppointmentStatus(dto);
             var successResponse = ApiResponse<bool>.Success(true, "Appointment status updated successfully");
+            return Ok(successResponse);
+        }
+
+        [HttpGet("GetAllAppointments")]
+        public async Task<IActionResult> GetAllAppointments()
+        {
+            var appointments = await _appointmentService.GetAllAppointments();
+            var successResponse = ApiResponse<IEnumerable<AppointmentDto>>.Success(appointments);
             return Ok(successResponse);
         }
         
