@@ -4,10 +4,12 @@ using Healthcare_ERP.Domain.Entities;
 
 namespace Healthcare_ERP.Application.Mappings;
 
-public class PrescriptionProfile:Profile
+public class PrescriptionProfile : Profile
 {
     public PrescriptionProfile()
     {
         CreateMap<AddPrescriptionDto, Prescription>();
+
+        CreateMap<PrescriptionItemDto, PrescriptionItem>();
     }
 }

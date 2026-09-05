@@ -64,7 +64,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("Appointments", (string)null);
                 });
 
             modelBuilder.Entity("Healthcare_ERP.Domain.Entities.Diagnosis", b =>
@@ -99,7 +99,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
 
                     b.HasIndex("AppointmentId");
 
-                    b.ToTable("Diagnoses");
+                    b.ToTable("Diagnoses", (string)null);
                 });
 
             modelBuilder.Entity("Healthcare_ERP.Domain.Entities.Doctor", b =>
@@ -486,7 +486,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
 
                     b.HasIndex("AppointmentId");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Prescriptions", (string)null);
                 });
 
             modelBuilder.Entity("Healthcare_ERP.Domain.Entities.Speciality", b =>
@@ -504,7 +504,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Specialities");
+                    b.ToTable("Specialities", (string)null);
 
                     b.HasData(
                         new
@@ -670,7 +670,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
 
                     b.HasIndex("PrescriptionId");
 
-                    b.ToTable("PrescriptionItems");
+                    b.ToTable("PrescriptionItems", (string)null);
                 });
 
             modelBuilder.Entity("Healthcare_ERP.Domain.Entities.Appointment", b =>
