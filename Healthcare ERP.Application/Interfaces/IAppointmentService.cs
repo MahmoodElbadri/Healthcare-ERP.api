@@ -12,5 +12,6 @@ public interface IAppointmentService
     // Task<bool> GetPatientAppointments(int id);
     Task<bool> UpdateAppointmentStatus(UpdateAppointmentStatusDto dto);
     Task<IEnumerable<AppointmentDto>> GetAllAppointments();
+    // Task<IEnumerable<AppointmentDto>> AllAppointmentsWithPatients();
 
 }

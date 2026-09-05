@@ -75,9 +75,9 @@ public class AppointmentService : IAppointmentService
             throw new NotFoundException("Doctor not found", id.ToString());
         }
 
-        var appointments = await _unitOfWork.Appointments.Find(tmp => tmp.DoctorId == id);
+        var appointments = await _unitOfWork.Appointments.GetWithIncludesByIdAsync(id, tmp => tmp.Doctor , tmp => tmp.Patient);
 
-        if (!appointments.Any())
+        if (appointments == null)
         {
             throw new NotFoundException("No appointments found for this doctor", id.ToString());
         }
@@ -98,12 +98,14 @@ public class AppointmentService : IAppointmentService
 
     public async Task<IEnumerable<AppointmentDto>> GetAllAppointments()
     {
-        var appointments = await _unitOfWork.Appointments.GetAll();
-        foreach (var appointment in appointments)
-        {
-            appointment.Doctor = await _unitOfWork.Doctors.Get(appointment.DoctorId);
-            appointment.Patient = await _unitOfWork.Patients.Get(appointment.PatientId);
-        }
+        var appointments = await _unitOfWork.Appointments.GetAllWithIncludes(tmp => tmp.Doctor, tmp => tmp.Patient);
+        //foreach (var appointment in appointments)
+        //{
+        //    appointment.Doctor = await _unitOfWork.Doctors.Get(appointment.DoctorId);
+        //    appointment.Patient = await _unitOfWork.Patients.Get(appointment.PatientId);
+        //}
         return _mapper.Map<IEnumerable<AppointmentDto>>(appointments);
     }
+
+    
 }
