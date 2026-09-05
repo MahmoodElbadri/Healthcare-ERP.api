@@ -77,3 +77,4 @@ IIS Express
 .vs
 .vscode
 iisexpress
+/Healthcare ERP.Application/DTOs/SaveExaminationDto.cs
