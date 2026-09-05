@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Healthcare_ERP.Domain.Entities;
 
 namespace Healthcare_ERP.Application.SeedingDb;
+
 public static class SpecialitySeed
 {
     public static readonly List<Speciality> Specialities = new()

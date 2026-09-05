@@ -10,7 +10,8 @@ public interface IUnitOfWork:IDisposable
     IGenericRepository<Appointment> Appointments { get; }
     IGenericRepository<Prescription> Prescriptions { get; }
     IGenericRepository<Speciality> Specialities { get; }
-
+    IGenericRepository<Diagnosis> Diagnoses { get; }
+    
     Task<int> CompleteAsync();
 
 }
