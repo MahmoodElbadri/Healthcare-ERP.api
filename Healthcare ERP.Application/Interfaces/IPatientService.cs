@@ -9,4 +9,5 @@ public interface IPatientService
     Task DeletePatient(int id);
     Task<PatientDto> GetPatientById(int id);
     Task<IEnumerable<PatientDto>> GetAllPatients();
+    Task<PatientHistoryDto> GetPatientHistory(int id);
 }

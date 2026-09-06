@@ -9,5 +9,6 @@ public class DiagnosisProfile:Profile
     public DiagnosisProfile()
     {
         CreateMap<AddDiagnosisDto, Diagnosis>();
+        CreateMap<Diagnosis, DiagnosisDto>();
     }
 }

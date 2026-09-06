@@ -11,5 +11,6 @@ public class PrescriptionProfile : Profile
         CreateMap<AddPrescriptionDto, Prescription>();
 
         CreateMap<PrescriptionItemDto, PrescriptionItem>();
+        CreateMap<Prescription, PrescriptionDto>();
     }
 }

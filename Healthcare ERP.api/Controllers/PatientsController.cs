@@ -60,4 +60,12 @@ public class PatientsController : ControllerBase
         return Ok(successResponse);
     }
 
+    [HttpGet("get-patient-history/{patientId}")]
+    public async Task<IActionResult> GetPatientHistory([FromRoute] int patientId)
+    {
+        var patientHistoryDto = await _patientService.GetPatientHistory(patientId);
+        var successResponse = ApiResponse<PatientHistoryDto>.Success(patientHistoryDto);
+        return Ok(successResponse);
+    }
+
 }
