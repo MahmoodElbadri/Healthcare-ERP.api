@@ -15,6 +15,7 @@ public class UnitOfWork : IUnitOfWork
     public IGenericRepository<Prescription> Prescriptions { get; }
     public IGenericRepository<Speciality> Specialities { get; }
     public IGenericRepository<Diagnosis> Diagnoses { get; }
+    public IGenericRepository<Invoice> Invoices { get; }
 
     public UnitOfWork(HealthDbContext dbContext)
     {
@@ -27,6 +28,7 @@ public class UnitOfWork : IUnitOfWork
         Prescriptions = new GenericRepository<Prescription>(_dbContext);
         Specialities = new GenericRepository<Speciality>(_dbContext);
         Diagnoses = new GenericRepository<Diagnosis>(_dbContext);
+        Invoices = new GenericRepository<Invoice>(_dbContext);
     }
 
     public async Task<int> CompleteAsync()

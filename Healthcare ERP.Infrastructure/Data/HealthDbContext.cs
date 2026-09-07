@@ -1,10 +1,10 @@
-﻿using Healthcare_ERP.Domain.Entities;
+using Healthcare_ERP.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Healthcare_ERP.Infrastructure.Data;
 
-public class HealthDbContext:DbContext
+public class HealthDbContext(DbContextOptions<HealthDbContext> options) : DbContext(options)
 {
     public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Diagnosis> Diagnoses { get; set; }
@@ -14,10 +14,9 @@ public class HealthDbContext:DbContext
     public DbSet<Doctor> Doctors { get; set; }
     public DbSet<Patient> Patients { get; set; }
     public DbSet<Speciality> Specialities { get; set; }
-    public HealthDbContext(DbContextOptions<HealthDbContext> options) : base(options)
-    {
-        
-    }
+    public DbSet<Invoice> Invoices { get; set; }
+
+
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {

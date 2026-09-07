@@ -29,6 +29,15 @@ public class ExaminationService:IExaminationService
         await _unitOfWork.Diagnoses.Add(diagnosis);
         await _unitOfWork.Prescriptions.Add(prescription);
         appointment.Status = AppointmentStatus.Completed;
+        var invoice = new Invoice
+        {
+            AppointmentId = appointment.Id,
+            TotalAmount = 500,
+            Status = PaymentStatus.Pending,
+            IssueDate = DateTime.Now,
+            PaymentDate = DateTime.Now
+        };
+        await _unitOfWork.Invoices.Add(invoice);
         await _unitOfWork.Appointments.Update(appointment);
         await _unitOfWork.CompleteAsync();
     }

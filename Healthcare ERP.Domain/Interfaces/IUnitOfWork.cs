@@ -11,6 +11,7 @@ public interface IUnitOfWork:IDisposable
     IGenericRepository<Prescription> Prescriptions { get; }
     IGenericRepository<Speciality> Specialities { get; }
     IGenericRepository<Diagnosis> Diagnoses { get; }
+    IGenericRepository<Invoice> Invoices { get; }
     
     Task<int> CompleteAsync();
 

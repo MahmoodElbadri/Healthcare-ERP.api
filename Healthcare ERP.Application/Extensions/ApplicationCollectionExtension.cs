@@ -16,5 +16,6 @@ public static class ApplicationCollectionExtension
         services.AddScoped<IAppointmentService,AppointmentService>();
         services.AddScoped<IMedicationService,MedicationService>();
         services.AddScoped<IExaminationService,ExaminationService>();
+        services.AddScoped<IInvoiceService, InvoiceService>();
     }
 }
