@@ -35,7 +35,6 @@ public class ExaminationService:IExaminationService
             TotalAmount = 500,
             Status = PaymentStatus.Pending,
             IssueDate = DateTime.Now,
-            PaymentDate = DateTime.Now
         };
         await _unitOfWork.Invoices.Add(invoice);
         await _unitOfWork.Appointments.Update(appointment);

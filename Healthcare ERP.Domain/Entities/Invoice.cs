@@ -13,5 +13,5 @@ public class Invoice:BaseEntity
     public decimal TotalAmount { get; set; }
     public PaymentStatus Status { get; set; }
     public DateTime IssueDate { get; set; }
-    public DateTime PaymentDate { get; set; }
+    public DateTime? PaymentDate { get; set; }
 }
