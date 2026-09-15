@@ -16,7 +16,7 @@ public class SpecialityService : ISpecialityService
     }
     public async Task<IEnumerable<SpecialityDto>> GetAllSpecialities()
     {
-        var specialities = await _unitOfWork.Specialities.GetAll();
+        var specialities =  _unitOfWork.Specialities.GetAll();
         return _mapper.Map<IEnumerable<SpecialityDto>>(specialities);
     }
 }

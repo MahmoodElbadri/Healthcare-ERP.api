@@ -23,7 +23,7 @@ public class MedicationService : IMedicationService
 
     public async Task<IEnumerable<MedicationDto>> GetAllMedications()
     {
-        var medications = await _unitOfWork.Medications.GetAll();
+        var medications =  _unitOfWork.Medications.GetAll();
         return _mapper.Map<IEnumerable<MedicationDto>>(medications);
     }
 }

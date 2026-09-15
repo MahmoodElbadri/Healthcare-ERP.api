@@ -21,7 +21,7 @@ public class InvoiceService:IInvoiceService
 
     public async Task<List<InvoiceDto>> GetAllInvoicesAsync()
     {
-        var invoices = await _unitOfWork.Invoices.GetAll();
+        var invoices =  _unitOfWork.Invoices.GetAll();
         return _mapper.Map<List<InvoiceDto>>(invoices);
     }
 

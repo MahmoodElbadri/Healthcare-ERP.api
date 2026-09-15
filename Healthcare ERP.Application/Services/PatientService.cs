@@ -35,7 +35,7 @@ public class PatientService : IPatientService
 
     public async Task<IEnumerable<PatientDto>> GetAllPatients()
     {
-        var patients = await _unitOfWork.Patients.GetAll();
+        var patients =  _unitOfWork.Patients.GetAll();
         return _mapper.Map<IEnumerable<PatientDto>>(patients);
     }
 
@@ -54,8 +54,8 @@ public class PatientService : IPatientService
 
         var appointmentIds = appointments.Select(a => a.Id);
 
-        var diagnoses = await _unitOfWork.Diagnoses.Find(d => appointmentIds.Contains(d.AppointmentId));
-        var prescriptions = await _unitOfWork.Prescriptions.Find(p => appointmentIds.Contains(p.AppointmentId));
+        var diagnoses =  _unitOfWork.Diagnoses.Find(d => appointmentIds.Contains(d.AppointmentId));
+        var prescriptions =  _unitOfWork.Prescriptions.Find(p => appointmentIds.Contains(p.AppointmentId));
 
         return new PatientHistoryDto
         {

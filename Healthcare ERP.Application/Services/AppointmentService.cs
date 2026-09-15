@@ -36,7 +36,7 @@ public class AppointmentService : IAppointmentService
             throw new NotFoundException($"Patient with ID {dto.PatientId} not found");
 
         // 3. جلب المواعيد الموجودة
-        var existingAppointments = await _unitOfWork.Appointments
+        var existingAppointments =  _unitOfWork.Appointments
             .Find(a => a.DoctorId == dto.DoctorId
                        && a.AppointmentDate == dto.AppointmentDate
                        && a.Status != AppointmentStatus.Cancelled);
@@ -68,7 +68,7 @@ public class AppointmentService : IAppointmentService
 
     public async Task<IEnumerable<AppointmentDto>> GetDoctorAppointments(int id)
     {
-        var doctor = await _unitOfWork.Doctors.Find(tmp => tmp.Id == id);
+        var doctor =  _unitOfWork.Doctors.Find(tmp => tmp.Id == id);
 
         if (!doctor.Any())
         {

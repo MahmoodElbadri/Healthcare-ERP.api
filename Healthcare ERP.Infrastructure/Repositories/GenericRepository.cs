@@ -19,9 +19,40 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return res.Entity;
     }
 
-    public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)
+    public IQueryable<T> FindWithIncludes(
+        Expression<Func<T, bool>> expression,
+        params Expression<Func<T, object>>[] includes)
     {
-        return await _dbContext.Set<T>().Where(expression).ToListAsync();
+        IQueryable<T> query = _dbContext.Set<T>().Where(expression);
+
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+
+        return query;
+    }
+
+    public Task<decimal> SumAsync(
+        Expression<Func<T, bool>> expression,
+        Expression<Func<T, decimal>> selector)
+    {
+        return _dbContext.Set<T>()
+            .Where(expression)
+            .SumAsync(selector);
+    }
+
+    public Task<int> CountAsync(
+        Expression<Func<T, bool>> expression)
+    {
+        return _dbContext.Set<T>()
+            .Where(expression)
+            .CountAsync();
+    }
+
+    public IQueryable<T> Find(Expression<Func<T, bool>> expression)
+    {
+        return _dbContext.Set<T>().Where(expression);
     }
 
     public async Task<T?> Get(int id)
@@ -29,9 +60,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return await _dbContext.Set<T>().FindAsync(id);
     }
 
-    public async Task<IEnumerable<T>> GetAll()
+    public IQueryable<T> GetAll()
     {
-        return await _dbContext.Set<T>().ToListAsync();
+        return _dbContext.Set<T>();
     }
 
     /// <summary>
@@ -40,7 +71,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     /// <param name="includes">The expressions for the related entities to include.</param>
     /// <returns>Returns all the data of the Table but the Related Tables will be loaded too</returns>
 
-    public async Task<IEnumerable<T>> GetAllWithIncludes(params Expression<Func<T, object>>[] includes)
+    public Task<IQueryable<T>> GetAllWithIncludes(params Expression<Func<T, object>>[] includes)
     {
         IQueryable<T> query = _dbContext.Set<T>();
 
@@ -52,10 +83,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             }
         }
 
-        return await query.AsNoTracking().ToListAsync();
+        return Task.FromResult(query);
     }
 
-    public async Task<IEnumerable<T>> GetWithIncludesByIdAsync(
+    public Task<IQueryable<T>> GetWithIncludesByIdAsync(
         int id,
         params Expression<Func<T, object>>[] includes)
     {
@@ -69,17 +100,18 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             }
         }
 
-        return await query.AsNoTracking().Where(x => EF.Property<int>(x, "Id") == id).ToListAsync();
+        return Task.FromResult(query.Where(x => EF.Property<int>(x, "Id") == id));
     }
 
-
-    public async Task Remove(T entity)
+    public Task Remove(T entity)
     {
         _dbContext.Set<T>().Remove(entity);
+        return Task.CompletedTask;
     }
 
-    public async Task Update(T entity)
+    public Task Update(T entity)
     {
         _dbContext.Set<T>().Update(entity);
+        return Task.CompletedTask;
     }
 }
