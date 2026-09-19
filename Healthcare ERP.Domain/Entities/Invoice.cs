@@ -10,6 +10,7 @@ public class Invoice:BaseEntity
 {
     public int AppointmentId { get; set; }
     public Appointment Appointment { get; set; }
+
     public decimal TotalAmount { get; set; }
     public PaymentStatus Status { get; set; }
     public DateTime IssueDate { get; set; }

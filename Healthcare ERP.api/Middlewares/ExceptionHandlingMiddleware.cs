@@ -21,6 +21,7 @@ public class ExceptionHandlingMiddleware
         {
             // Let the request proceed normally
             await _next(context);
+            //throw new Exception("This is a test exception to demonstrate the middleware.");
         }
         catch (Exception ex)
         {
