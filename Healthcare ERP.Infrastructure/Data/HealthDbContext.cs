@@ -1,10 +1,11 @@
 using Healthcare_ERP.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Healthcare_ERP.Infrastructure.Data;
 
-public class HealthDbContext(DbContextOptions<HealthDbContext> options) : DbContext(options)
+public class HealthDbContext(DbContextOptions<HealthDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
     public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Diagnosis> Diagnoses { get; set; }

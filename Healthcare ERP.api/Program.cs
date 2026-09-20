@@ -1,6 +1,9 @@
 using Healthcare_ERP.api.Middlewares;
 using Healthcare_ERP.Application.Extensions;
+using Healthcare_ERP.Application.Seeders;
+using Healthcare_ERP.Domain.Entities;
 using Healthcare_ERP.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +20,7 @@ try
 
 
     // Add services to the container.
+    builder.Services.AddAuthentication();
 
     builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +29,9 @@ try
 
     builder.Services.AddInfrastructure(builder.Configuration);
     builder.Services.AddApplication();
+
+
+    
 
     //adding cors
     builder.Services.AddCors(options =>
@@ -48,12 +55,32 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-    app.UseCors("AllowFrontend");
     app.UseHttpsRedirection();
-
+    app.UseCors("AllowFrontend");
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapControllers();
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+
+        try
+        {
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+            var configuration = services.GetRequiredService<IConfiguration>();
+
+            await RoleSeeder.SeedRolesAsync(roleManager);
+            await UserSeeder.SeedAdminUserAsync(userManager, roleManager, configuration);
+        }
+        catch (Exception ex)
+        {
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "❌ Error occurred while seeding database");
+        }
+    }
 
     app.Run();
 }

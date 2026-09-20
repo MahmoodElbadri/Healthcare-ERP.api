@@ -4,6 +4,7 @@ using Healthcare_ERP.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Healthcare_ERP.Infrastructure.Migrations
 {
     [DbContext(typeof(HealthDbContext))]
-    partial class HealthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260920181912_AddingIdentity")]
+    partial class AddingIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -301,7 +304,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(1839),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(5622),
                             IsDeleted = false,
                             Name = "Paracetamol",
                             Notes = "مسكن وخافض للحرارة - 500mg"
@@ -309,7 +312,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2814),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6581),
                             IsDeleted = false,
                             Name = "Ibuprofen",
                             Notes = "مسكن ومضاد التهاب غير ستيرويدي"
@@ -317,7 +320,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2816),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6583),
                             IsDeleted = false,
                             Name = "Amoxicillin",
                             Notes = "مضاد حيوي من مجموعة البنسلين"
@@ -325,7 +328,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2817),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6584),
                             IsDeleted = false,
                             Name = "Azithromycin",
                             Notes = "مضاد حيوي من مجموعة الماكروليدات"
@@ -333,7 +336,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2818),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6585),
                             IsDeleted = false,
                             Name = "Ciprofloxacin",
                             Notes = "مضاد حيوي واسع المجال - فلوروكينولون"
@@ -341,7 +344,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2826),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6590),
                             IsDeleted = false,
                             Name = "Metformin",
                             Notes = "خافض لسكر الدم - لمرضى السكري النوع الثاني"
@@ -349,7 +352,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2827),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6591),
                             IsDeleted = false,
                             Name = "Insulin Glargine",
                             Notes = "أنسولين طويل المفعول"
@@ -357,7 +360,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2828),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6592),
                             IsDeleted = false,
                             Name = "Amlodipine",
                             Notes = "خافض لضغط الدم - حاصرات قنوات الكالسيوم"
@@ -365,7 +368,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2828),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6593),
                             IsDeleted = false,
                             Name = "Losartan",
                             Notes = "خافض لضغط الدم - حاصرات مستقبلات الأنجيوتنسين"
@@ -373,7 +376,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2831),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6596),
                             IsDeleted = false,
                             Name = "Atorvastatin",
                             Notes = "خافض للكوليسترول - ستاتين"
@@ -381,7 +384,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2832),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6596),
                             IsDeleted = false,
                             Name = "Omeprazole",
                             Notes = "مثبط مضخة البروتون - لقرحة المعدة والارتجاع"
@@ -389,7 +392,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2833),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6597),
                             IsDeleted = false,
                             Name = "Ranitidine",
                             Notes = "مضاد للحموضة - حاصرات H2 (الاستخدام محدود)"
@@ -397,7 +400,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2833),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6598),
                             IsDeleted = false,
                             Name = "Salbutamol",
                             Notes = " موسع للشعب الهوائية - بخاخ للربو"
@@ -405,7 +408,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2834),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6599),
                             IsDeleted = false,
                             Name = "Prednisolone",
                             Notes = "كورتيكوستيرويد مضاد للالتهاب"
@@ -413,7 +416,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2835),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6600),
                             IsDeleted = false,
                             Name = "Dexamethasone",
                             Notes = "كورتيكوستيرويد قوي المفعول"
@@ -421,7 +424,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2836),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6601),
                             IsDeleted = false,
                             Name = "Chlorpheniramine",
                             Notes = "مضاد هيستامين للحساسية"
@@ -429,7 +432,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2837),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6602),
                             IsDeleted = false,
                             Name = "Cetirizine",
                             Notes = "مضاد هيستامين من الجيل الثاني - غير منوّم"
@@ -437,7 +440,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2839),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6604),
                             IsDeleted = false,
                             Name = "Acetylsalicylic Acid (Aspirin)",
                             Notes = "مميع للدم ومسكن"
@@ -445,7 +448,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2840),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6605),
                             IsDeleted = false,
                             Name = "Clopidogrel",
                             Notes = "مضاد لتجميع الصفائح الدموية"
@@ -453,7 +456,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2841),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6606),
                             IsDeleted = false,
                             Name = "Warfarin",
                             Notes = "مضاد تخثر - يتطلب مراقبة INR"
@@ -461,7 +464,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2842),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6606),
                             IsDeleted = false,
                             Name = "Levothyroxine",
                             Notes = "هرمون الغدة الدرقية - لقصور الدرقية"
@@ -469,7 +472,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2843),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6607),
                             IsDeleted = false,
                             Name = "Metoprolol",
                             Notes = "حاصرات بيتا - لضغط الدم وقصور القلب"
@@ -477,7 +480,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2843),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6608),
                             IsDeleted = false,
                             Name = "Enalapril",
                             Notes = "مثبطات الإنزيم المحول للأنجيوتنسين"
@@ -485,7 +488,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2844),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6609),
                             IsDeleted = false,
                             Name = "Furosemide",
                             Notes = "مدرّ للبول - لاحتباس السوائل"
@@ -493,7 +496,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 25,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2852),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6619),
                             IsDeleted = false,
                             Name = "Gliclazide",
                             Notes = "خافض لسكر الدم من مجموعة السلفونيل يوريا"
@@ -501,7 +504,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 26,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2853),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6620),
                             IsDeleted = false,
                             Name = "Diazepam",
                             Notes = "مهدئ - بنزوديازيبين (يُصرف بوصفة مضبوطة)"
@@ -509,7 +512,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 27,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2854),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6621),
                             IsDeleted = false,
                             Name = "Tramadol",
                             Notes = "مسكن أفيوني متوسط القوة (يُصرف بوصفة مضبوطة)"
@@ -517,7 +520,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2854),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6621),
                             IsDeleted = false,
                             Name = "Gentamicin",
                             Notes = "مضاد حيوي أمينوغليكوزيد - للحقن"
@@ -525,7 +528,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 29,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2855),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6622),
                             IsDeleted = false,
                             Name = "Clotrimazole",
                             Notes = "مضاد فطري موضعي"
@@ -533,7 +536,7 @@ namespace Healthcare_ERP.Infrastructure.Migrations
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTime(2026, 9, 20, 18, 35, 43, 45, DateTimeKind.Utc).AddTicks(2856),
+                            CreatedAt = new DateTime(2026, 9, 20, 18, 19, 11, 30, DateTimeKind.Utc).AddTicks(6623),
                             IsDeleted = false,
                             Name = "ORS (Oral Rehydration Salts)",
                             Notes = "أملاح الإماهة الفموية - للجفاف"
