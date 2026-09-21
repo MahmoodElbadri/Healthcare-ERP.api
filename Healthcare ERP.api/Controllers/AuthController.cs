@@ -1,5 +1,6 @@
 using Healthcare_ERP.Application.DTOs;
 using Healthcare_ERP.Domain.Entities;
+using Healthcare_ERP.Domain.Wrappers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -76,7 +77,16 @@ public class AuthController : ControllerBase
 
         var token = await GenerateJwtToken(user);
 
-        return Ok(token);
+        var authResponse = new AuthResponseDto
+        {
+            Token = token.Token,
+            Email = token.Email,
+            Roles = token.Roles,
+            Expiration = token.Expiration
+        };
+        var apiResponse =  ApiResponse<AuthResponseDto>.Success(authResponse, "Login successful");
+
+        return Ok(apiResponse);
     }
 
     // ✅ Generate JWT Token
