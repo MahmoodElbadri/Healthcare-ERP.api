@@ -82,7 +82,8 @@ public class AuthController : ControllerBase
             Token = token.Token,
             Email = token.Email,
             Roles = token.Roles,
-            Expiration = token.Expiration
+            Expiration = token.Expiration,
+            FullName = user.FullName
         };
         var apiResponse =  ApiResponse<AuthResponseDto>.Success(authResponse, "Login successful");
 

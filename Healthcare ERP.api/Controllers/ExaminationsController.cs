@@ -1,12 +1,14 @@
 using Healthcare_ERP.Application.DTOs;
 using Healthcare_ERP.Application.Interfaces;
 using Healthcare_ERP.Domain.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Healthcare_ERP.api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ExaminationsController : ControllerBase
 {
     private readonly IExaminationService _examinationService;

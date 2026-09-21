@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Healthcare_ERP.Application.DTOs;
 using Healthcare_ERP.Application.Interfaces;
 using Healthcare_ERP.Domain.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Healthcare_ERP.api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : ControllerBase
     {
         private readonly IDashboardService _dashboardService;

@@ -4,12 +4,14 @@ using Healthcare_ERP.Application.Interfaces;
 using Healthcare_ERP.Domain.Entities;
 using Healthcare_ERP.Domain.Interfaces;
 using Healthcare_ERP.Domain.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Healthcare_ERP.api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class PatientsController : ControllerBase
 {
     private readonly IPatientService _patientService;

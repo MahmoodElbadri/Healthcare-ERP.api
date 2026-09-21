@@ -1,12 +1,14 @@
 using Healthcare_ERP.Application.DTOs;
 using Healthcare_ERP.Application.Interfaces;
 using Healthcare_ERP.Domain.Wrappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Healthcare_ERP.api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class InvoicesController : ControllerBase
 {
     private readonly IInvoiceService _invoiceService;

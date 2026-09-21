@@ -4,6 +4,7 @@ namespace Healthcare_ERP.Domain.Entities;
 
 public class Patient : BaseEntity
 {
+    public string AppUserId { get; set; } = string.Empty;
     public string Name { get; set; }
     public Gender Gender { get; set; }
     public DateOnly DateOfBirth { get; set; }

@@ -2,6 +2,7 @@
 
 public class Doctor : BaseEntity
 {
+    public string AppUserId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string Specialty { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
