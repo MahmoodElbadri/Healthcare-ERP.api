@@ -1,4 +1,5 @@
 ﻿
+using Hangfire;
 using Healthcare_ERP.Domain.Entities;
 using Healthcare_ERP.Domain.Interfaces;
 using Healthcare_ERP.Infrastructure.Data;
@@ -62,6 +63,15 @@ public static class InfrastructureCollectionExtensions
                         Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
                 };
             });
+        // جوا ملف InfrastructureExtensions.cs بتاعك لازم يكون موجود:
+        services.AddHangfire(config => config
+            .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseSqlServerStorage(configuration.GetConnectionString("DefaultConnection")));
+
+        // والسطر ده مهم جداً عشان السيرفر اللي هينفذ الـ Jobs يشتغل
+        services.AddHangfireServer();
         return services;
     }
 }

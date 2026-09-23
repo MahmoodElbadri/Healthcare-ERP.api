@@ -1,5 +1,7 @@
+using Hangfire;
 using Healthcare_ERP.api.Middlewares;
 using Healthcare_ERP.Application.Extensions;
+using Healthcare_ERP.Application.Interfaces;
 using Healthcare_ERP.Application.Seeders;
 using Healthcare_ERP.Domain.Entities;
 using Healthcare_ERP.Infrastructure.Extensions;
@@ -60,11 +62,20 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
+    app.UseHangfireDashboard("/hangfire");
+
+
     app.MapControllers();
 
     using (var scope = app.Services.CreateScope())
     {
         var services = scope.ServiceProvider;
+
+        var recurringJobManager = services.GetRequiredService<IRecurringJobManager>();
+        recurringJobManager.AddOrUpdate<IAppointmentService>(
+            "CancelNotCompletedAppointmentsBeforeToday",
+            s => s.CancelNotCompletedAppointmentsBeforeToday(),
+            Cron.Daily);
 
         try
         {

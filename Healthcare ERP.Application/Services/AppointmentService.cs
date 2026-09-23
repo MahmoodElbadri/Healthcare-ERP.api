@@ -107,5 +107,16 @@ public class AppointmentService : IAppointmentService
         return _mapper.Map<IEnumerable<AppointmentDto>>(appointments);
     }
 
-    
+    public async Task<bool> CancelNotCompletedAppointmentsBeforeToday()
+    {
+        var appointments = _unitOfWork.Appointments.Find(tmp => tmp.AppointmentDate < DateOnly.FromDateTime(DateTime.Now) && tmp.Status == AppointmentStatus.Scheduled);
+
+        foreach (var appointment in appointments)
+        {
+            appointment.Status = AppointmentStatus.Cancelled;
+        }
+
+        await _unitOfWork.CompleteAsync();
+        return true;
+    }
 }
